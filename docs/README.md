@@ -7,4 +7,6 @@ https://github.com/horizoncrafts/dw-cracow-project/wiki
 ## Team:
 - Maciej (https://github.com/dzieciou)
 - Paweł (https://github.com/pdulak)
+- Krzysiek (https://github.com/dudekkrzysztof)
 - Piotr (https://github.com/horizoncrafts)
+
