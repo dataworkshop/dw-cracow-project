@@ -5,5 +5,6 @@ The current discussions are conducted on wiki pages:
 https://github.com/horizoncrafts/dw-cracow-project/wiki
 
 ## Team:
+- Maciej (https://github.com/dzieciou)
 - Paweł (https://github.com/pdulak)
 - Piotr (https://github.com/horizoncrafts)
