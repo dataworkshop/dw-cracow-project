@@ -11,9 +11,7 @@ https://github.com/dataworkshop/dw-cracow-project/wiki
 ## Team:
 - **Marcin** (https://github.com/MarcinFilipek)
 - **Maciej** (https://github.com/dzieciou)
-
-#### Admini:
-- **Paweł** (https://github.com/pdulak)
-- **Krzysiek** (https://github.com/dudekkrzysztof)
-- **Piotr** (https://github.com/horizoncrafts)
+- **Paweł** (https://github.com/pdulak) (A)
+- **Krzysiek** (https://github.com/dudekkrzysztof) (A)
+- **Piotr** (https://github.com/horizoncrafts) (A)
 
