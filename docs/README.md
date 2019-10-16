@@ -2,7 +2,7 @@
 
 The current discussions are conducted on wiki pages:
 
-https://github.com/horizoncrafts/dw-cracow-project/wiki
+https://github.com/dataworkshop/dw-cracow-project/wiki
 
 ## Team:
 - Maciej (https://github.com/dzieciou)
