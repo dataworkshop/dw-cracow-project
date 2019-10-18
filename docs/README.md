@@ -6,7 +6,7 @@ https://github.com/dataworkshop/dw-cracow-project/wiki
 
 ## Slack: 
 - Projektowy: https://dataworkshopclub.slack.com/messages/CPGFQP5ML
-- Grupa Krakoska: https://dataworkshopclub.slack.com/messages/CG4GTUHRP
+- Grupa Krakowska: https://dataworkshopclub.slack.com/messages/CG4GTUHRP
 
 ## Team:
 - **Marcin** (https://github.com/MarcinFilipek)
