@@ -13,5 +13,5 @@ https://github.com/dataworkshop/dw-cracow-project/wiki
 - **Maciej** (https://github.com/dzieciou)
 - **Paweł** (https://github.com/pdulak) (A)
 - **Krzysiek** (https://github.com/dudekkrzysztof) (A)
-- **Piotr** (https://github.com/horizoncrafts) (A)
+- **Piotr** (https://github.com/horizoncrafts)
 
