@@ -1,0 +1,10 @@
+# run: conda env create --file environment.yml
+
+name: scrapers
+channels:
+  - conda-forge
+dependencies:
+  - python=3.7
+  - pip
+  - jsonlines
+  - scrapy
