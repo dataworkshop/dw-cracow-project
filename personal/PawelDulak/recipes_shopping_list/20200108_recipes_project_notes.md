@@ -1,6 +1,14 @@
 # Projekt przepisy -> lista zakupów
 
-## notatki
+## notatki 2020-01-22
+
+* zobaczyć jakie mamy dane
+* jakie mamy biblioteki do mierzenia podobieństwa ciągów znaków? Jak działają?
+* czy możemy wyodrębnić grupy produktów?
+* czy są słowa które można by usuwać z nazw produktów zanim je będziemy porównywać?
+* czy warto grupować po informacji "w puszce" ze względu na lokalizację w sklepie?
+
+## notatki 2020-01-08
 
 * strona: przepisy.pl - przepisy w formie łatwiejszej do scrapowania
 
