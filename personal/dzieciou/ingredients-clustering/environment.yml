@@ -1,0 +1,14 @@
+# run: conda env create --file environment.yml
+
+name: przepisy-env
+channels:
+  - conda-forge
+dependencies:
+  - python=3.7
+  - pip
+  - jupyterlab
+  - pandas
+  - scikit-learn
+  - pip:
+    - pystempel
+    - python-Levenshtein
