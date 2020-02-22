@@ -1,5 +1,43 @@
 # Projekt przepisy -> lista zakupów
 
+## notatki 2020-02-19
+
+1. Pobieranie danych -> użytkownik może dodać przepisy chodząc po stronach internetowych i używając pluginu (plugin należy napisać)
+   
+   a. czy jest możliwość od razu w pluginie pokazać gdzie jest przepis na stronie?
+
+   b. podawanie na ile osób chcemy gotować?
+
+   c. podawanie na ile osób jest ten konkretny przepis?
+
+   d. plugin komunikuje się z serwerem na którym następuje dalsza obróbka danych
+
+   e. co ze stronami których nie obsługujemy? "Powiadom mnie kiedy będzie wsparcie dla tej strony"?
+
+2. Scrapowanie składników z przepisów -> mamy niektóre strony z których możemy szybko pobrać składniki oraz sporo stron z których składniki jest trudniej pobrać (nie są jednoznacznie wydzielone). Potrzebujemy scrapery do różnych stron. 
+
+   a. co otrzymujemy w wyniku scrapowania: lista składników, składnik i ilość
+
+   b. Mamy gotowy scrapper do "przepisy.pl"
+
+   c. Przydał by się silnik do entity recognition w przepisach w których nie mamy dostępu do listy składników
+
+3. Grupowanie składników na listę zakupów -> rozpoznawanie podobnych składników, odrzucanie nieistotnych informacji
+   
+   a. potrzebujemy silnik do grupowania składników 
+
+   b. w przyszłości, poza grupowaniem składników przydało by się jeszcze sumowanie ilości oraz przeliczanie ilości kiedy przepis jest na inną ilość osób a gotujemy na inną ilość.
+
+4. Gotową listę przekazujemy do pluginu do wyświetlenia w przeglądarce
+
+---
+
+Podział pracy:
+
+* Filip -> backend, plugin FF
+* Mikołaj -> scraping Lidl
+* Paweł -> plugin Chrome
+
 ## notatki 2020-01-22
 
 * zobaczyć jakie mamy dane
