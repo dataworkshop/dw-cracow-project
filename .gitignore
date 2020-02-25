@@ -221,3 +221,4 @@ $RECYCLE.BIN/
 # User-specific stuff
 .idea
 *.iml
+.ipynb_checkpoints
