@@ -1,0 +1,8 @@
+version: '3'
+services:
+  conda:
+    build: .
+    ports:
+      - "5555:5555"
+    volumes:
+      - ./notebooks:/notebooks

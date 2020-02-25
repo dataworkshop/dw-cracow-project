@@ -1,0 +1,5 @@
+FROM continuumio/anaconda3:2019.07
+WORKDIR /notebooks
+RUN /opt/conda/bin/conda update -n base -c defaults conda
+RUN /opt/conda/bin/conda install jupyter -y
+CMD /opt/conda/bin/jupyter notebook --notebook-dir=/notebooks --ip='*' --port=5555 --no-browser --allow-root
