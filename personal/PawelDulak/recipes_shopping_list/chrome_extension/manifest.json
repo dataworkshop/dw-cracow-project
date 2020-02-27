@@ -4,7 +4,7 @@
     "description": "Generujemy listę zakupów z przepisów kulinarnych",
     "permissions": ["activeTab", "declarativeContent", "storage"],
     "background": {
-        "scripts": ["background.js"],
+        "scripts": ["assets/js/background.js"],
         "persistent": false
     },
     "page_action": {
