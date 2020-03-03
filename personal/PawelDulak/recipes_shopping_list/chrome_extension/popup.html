@@ -34,8 +34,13 @@
             outline: 0;
         }
 
-        p, ul {
+        p, ul, label, input {
             font-size: 1rem;
+        }
+
+        input {
+            display: block;
+            width: 100%;
         }
     </style>
 </head>
@@ -45,11 +50,17 @@
     <button id="addRecipe">Dodaj przepis z aktualnej strony</button>
     <button id="generateShoppingList">Generuj listę zakupów</button>
     <button id="clearRecipesList">Wyczyść listę przepisów</button>
+    <label for="serverAddress">Adres serwera:</label>
+    <input type="text" name="serverAddress" id="serverAddress" value="http://127.0.0.1:5000/">
     <hr>
-    <p>Przepisy w schowku:</p>
-    <ul id="recipesList">
-        <li>Nie masz jeszcze żadnych przepisów na liście</li>
-    </ul>
+    <div id="recipesListPlaceholder">
+        <p>Przepisy w schowku:</p>
+        <ul id="recipesList">
+            <li>Nie masz jeszcze żadnych przepisów na liście</li>
+        </ul>
+    </div>
+    <div id="resultPlaceholder" style="display: none">
+    </div>
     <script src="assets/js/popup.js"></script>
 </body>
 
