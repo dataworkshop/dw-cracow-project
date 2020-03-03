@@ -2,6 +2,7 @@ let addRecipe = document.getElementById('addRecipe');
 let generateShoppingList = document.getElementById('generateShoppingList');
 let recipesList = document.getElementById('recipesList');
 let clearList = document.getElementById('clearRecipesList');
+let serverAddress = document.getElementById('serverAddress');
 
 document.addEventListener("DOMContentLoaded", function () {
     updateRecipesList();
@@ -19,6 +20,15 @@ generateShoppingList.onclick = function(element) {
     chrome.storage.sync.get('recipesArray', function (data) {
         if (data.recipesArray.length > 0) {
             document.getElementById('ajax-loader-overlay').style.display='block';
+
+            fetch(serverAddress.value, {
+                method: 'post', 
+                body: JSON.stringify(data.recipesArray)
+            })
+            .then(response => response.json())
+            .then(json => displayResults(json))
+            .catch(displayError())
+
         } else {
             alert('Nie ma żadnych przepisów do wysłania do serwera');
         }
@@ -61,4 +71,20 @@ function updateRecipesList() {
             recipesList.innerHTML = '<li>Brak przepisów na liście</li>';
         }
     });
+}
+
+function displayResults(json) {
+    let resultPlaceholder = document.getElementById('resultPlaceholder');
+    document.getElementById('recipesListPlaceholder').style.display='none';
+    resultPlaceholder.style.display='block';
+    resultPlaceholder.innerHTML = '<pre>' + JSON.stringify(json, undefined, 2) + '</pre>';
+    document.getElementById('ajax-loader-overlay').style.display = 'none';
+}
+
+function displayError() {
+    let resultPlaceholder = document.getElementById('resultPlaceholder');
+    document.getElementById('recipesListPlaceholder').style.display = 'none';
+    resultPlaceholder.style.display = 'block';
+    resultPlaceholder.innerHTML = '<p>Wystąpił błąd podczas komunikacji z serwerem</p>';
+    document.getElementById('ajax-loader-overlay').style.display = 'none';
 }
