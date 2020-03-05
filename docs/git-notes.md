@@ -12,13 +12,13 @@ GitHub to miejsce gdzie możemy nasze repozytoria przechowywać, zarządzać nim
 https://github.com/dataworkshop/dw-cracow-project/
 3. Będąc zalogowanym do GitHub możesz wejść na stronę naszego repozytorium i kliknąć `Fork` w prawym górnym rogu strony. Fork to Twoja prywatna kopia naszego repozytorium. Masz nad nim pełną władzę i możesz pracować w nim nie obawiając się że coś zepsujesz w naszym repozytorium projektowym.
 
-## Mam już swój Fork i co dalej?
+## Mam już swój Fork i co dalej? (lokalne repozytorium Git)
 
 Do pracy z narzędziem Git polecam linię poleceń (konsolę). Można używać także narzędzi wizualnych (Git GUI) czy obsługi Git wbudowanej w edytor programistyczny, ale wszystkie komendy w tym dokumencie będą się odnosić do konsoli z obsługą Git.
 
 1. Zainstaluj Git na swoim komputerze. W Linux zazwyczaj wystarczy w konsoli wpisać: `sudo apt install git`, dla Windows można pobrać na przykład z https://git-scm.com/download/win
 2. Załóż katalog w którym będziesz pracować, w tym miejscu utworzymy lokalną kopię Twojego repozytorium. Uruchom konsolę Git tak żeby pracowała w tym nowo utworzonym katalogu. 
-3. Na stronie GitHub otwórz sobie swoje repozytorium, po prawej stronie ekranu znajdziesz przycisk "Clone or download". Po jego kliknięciu pojawi się małe okno z adresem repozytorium. Ten adres należy skopiować. Ważne żeby pobrać wersję HTTPS chyba że wiesz co robisz pobierając wersję SSH :) ![GitHub Logo](images/clone-github.png)
+3. Na stronie GitHub otwórz sobie swoje repozytorium, po prawej stronie ekranu znajdziesz przycisk "Clone or download". Po jego kliknięciu pojawi się małe okno z adresem repozytorium. Ten adres należy skopiować. Ważne żeby pobrać wersję HTTPS chyba że wiesz co robisz pobierając wersję SSH :) ![Clone in GitHub](images/clone-github.png)
 4. W konsoli Git na swoim komputerze wykonaj komendę: `git clone [tutaj skopiowany adres]` czyli na przykład: `git clone https://github.com/kowalski/dw-cracow-project.git`. W ten sposób utworzyłeś lokalną kopię swojego repozytorium, na której będziesz pracować lokalnie.
 
 ## Codzienna praca z Git
@@ -56,3 +56,21 @@ Warto aby Twoje zmiany do repozytorium nie pozostawały wyłącznie na Twoim kom
 ## Pobieranie aktualnej wersji repozytorium projektu - fetch from upstream, merge
 
 ## Praca na branchach
+
+## Materiały dodatkowe
+
+* https://devstyle.pl/2018/10/26/5-sposobow-na-prace-z-gitem/
+
+## Uwagi
+
+### Instalacja Win: git-scm.com
+
+Windows Explorer Integration -> Git Bash here
+Default Text Editor -> VIM
+Use Git From -> Windows Command Prompt
+Terminal Emulator -> MinTTY
+
+### Konfiguracja git
+
+git config --global user.name "Jan Kowalski"
+git config --global user.email "jan.kowalski@gmail.com"
