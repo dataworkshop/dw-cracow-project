@@ -21,13 +21,14 @@ generateShoppingList.onclick = function(element) {
         if (data.recipesArray.length > 0) {
             document.getElementById('ajax-loader-overlay').style.display='block';
 
-            fetch(serverAddress.value, {
-                method: 'post', 
-                body: JSON.stringify(data.recipesArray)
-            })
-            .then(response => response.json())
-            .then(json => displayResults(json))
-            .catch(displayError())
+            setTimeout(function(){
+                fetch(serverAddress.value, {
+                    method: 'post', 
+                    body: JSON.stringify(data.recipesArray)
+                })
+                .then(response => response.json())
+                .then(json => displayResults(json))
+            }, 10);
 
         } else {
             alert('Nie ma żadnych przepisów do wysłania do serwera');
