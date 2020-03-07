@@ -155,7 +155,10 @@ git stash -u = stash razem z untracked files
 git stash save -u "description of stash" = preferowany sposób, z komentarzem
 git stash list
 git stash pop
-
+git reflog = pokazuje wszystkie zmiany (checkout, reset, commit, merge)
+git update-index --assume-unchanged [nazwa_pliku]
+git ls-files -v = pokazuje status pliku
+git update-index --no-assume-unchanged [nazwa_pliku]
 
 ## Nawigacja
 
