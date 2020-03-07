@@ -79,6 +79,9 @@ Terminal Emulator -> MinTTY
 git config --global user.name "Jan Kowalski"
 git config --global user.email "jan.kowalski@gmail.com"
 
+mechanizm zapamiętywania rozwiązań do konfliktów (rerere)
+git config --global rerere.enabled true
+
 windows - można użyć:
 git config core.editor notepad
 
