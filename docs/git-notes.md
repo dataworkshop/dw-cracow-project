@@ -74,3 +74,50 @@ Terminal Emulator -> MinTTY
 
 git config --global user.name "Jan Kowalski"
 git config --global user.email "jan.kowalski@gmail.com"
+
+windows - można użyć:
+git config core.editor notepad
+
+## Komendy
+
+git add
+git commit
+git status
+git diff
+git difftool
+git log
+git log --oneline
+git log -n4 
+git log --since='{15 minutes ago}'
+git tag nazwa_tagu <- ten jest 'lightweight'
+git tag nazwa_tagu -a -m "komentarz" <- ten jest annotated
+git tag nazwa_tagu numer_commit -a -m 
+git tag -d nazwa_tagu 
+
+## Nawigacja
+
+commit~X - X commitów wcześniej
+commit^^^ - 3 commity wcześniej
+git log tag1..tag2 - od tag1 (bez) do tag2 (włącznie)
+
+## Słowniczek
+
+### Repo, repozytorium
+
+Katalog na dysku, zawierający informację o wszystkich plikach projektu, jego historii i aktualnym stanie (w uproszczeniu).
+
+### Commit 
+
+Stan repozytorium w danym momencie. Zawiera także informacje o czasie utworzenia, autorze, komentarz.
+
+### Working copy, working directory, katalog roboczy
+
+Katalog w którym aktualnie pracujesz. Ze zmian na plikach w Working Copy tworzone są commity (kolejne wersje repozytorium).
+
+### Tag
+
+Wskaźnik, referencja do konkretnego commitu - komentarz, autor jest opcjonalny. Inaczej etykieta lub nazwa konkretnego commita.
+
+### Branch, gałąź
+
+Kopia repozytorium, można na niej pracować niezależnie od pozostałych kopii. Fizycznie znajduje się w tym samym katalogu, ale na czas pracy na innej gałęzi pliki są zamieniane.
