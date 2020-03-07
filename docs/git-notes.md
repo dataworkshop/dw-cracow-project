@@ -35,7 +35,7 @@ Możemy też dodawać pliki "hurtem" pisząc na przykład: `git add personal/kow
 
 Mając przygotowane wszystko co chcemy, wykonujemy komendę `git commit` która wprowadzi nasze zmiany do lokalnego repozytorium. Zostanie otworzony edytor w którym powinniśmy wpisać komentarz do naszych zmian. Jeśli chcemy wstawić komentarz od razu przy wykonywaniu komendy, można to zrobić pisząc: `git commit -m "Treść komentarza"`
 
-Commity powinny być małe, częste i spójne (dotyczące danej funkcjonalności)
+Commity powinny być małe, częste i spójne (dotyczące danej funkcjonalności). Commit nie musi działać ani "się kompilować" bo commit dokumentuje kroki Twojej pracy.
 
 ### Ignorowanie plików
 
@@ -87,10 +87,15 @@ git config core.editor notepad
 git clone [skąd]
 git clone [skąd] .
 git add
+git add [nazwa_pliku]
+git add [*.py]
+git add -i = dodawanie interaktywne
+git add -p = dodawanie w trybie patch plik po pliku
 git commit
 git status
 git diff
 git diff --word-diff
+git diff --cached = zmiany w staging area
 git difftool
 git log
 git log --oneline
@@ -137,6 +142,20 @@ git fetch = aktualizuje tracking branch, nie modyfikuje naszych gałęzi
 git fetch --prune --prune-tags
 git fetch --no-tags
 git pull = fetch + merge
+git reset = czyści staging area\
+git reset [commitSHA] = "przewija" branch do podanego commita
+git clean -n = co by zrobił
+git clean -i = interactive mode
+git clean -f = force (kasuje)
+git clean -d = pracuje także na katalogach
+git clean -fd = force wraz z katalogami
+git clean -fdx = kasuje również pliki ignorowane
+git stash = zapisanie ukrytego commita
+git stash -u = stash razem z untracked files
+git stash save -u "description of stash" = preferowany sposób, z komentarzem
+git stash list
+git stash pop
+
 
 ## Nawigacja
 
@@ -237,3 +256,7 @@ Lokalna gałąź reprezentująca zdalną gałąź (np. origin/master) - nie da s
 ### staging area / cache / index
 
 To co będzie w następnym commit - coś między komendami add i commit. Można tutaj umieścić jeden z wielu zmienionych plików. Można też umieścić część zmian z jednego pliku. 
+
+### hunk 
+
+Zakres zmian w pojedynczym pliku. Część interpretowana przez git jako coś co się w pliku zmieniło i może być oddzielone od innych zmian w tym samym pliku. Czasem jest to jedna linijka, czasem kilka linijek następujących po sobie. 
