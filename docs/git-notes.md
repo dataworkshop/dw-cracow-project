@@ -35,6 +35,8 @@ Możemy też dodawać pliki "hurtem" pisząc na przykład: `git add personal/kow
 
 Mając przygotowane wszystko co chcemy, wykonujemy komendę `git commit` która wprowadzi nasze zmiany do lokalnego repozytorium. Zostanie otworzony edytor w którym powinniśmy wpisać komentarz do naszych zmian. Jeśli chcemy wstawić komentarz od razu przy wykonywaniu komendy, można to zrobić pisząc: `git commit -m "Treść komentarza"`
 
+Commity powinny być małe, częste i spójne (dotyczące danej funkcjonalności)
+
 ### Ignorowanie plików
 
 Jeśli czegoś nie chcemy zachowywać w naszym repozytorium (pliki z danymi, pliki tymczasowe, pliki z hasłami i tokenami), należy je wykluczyć za pomocą odpowiedniego wpisu w pliku `.gitignore`. Plik ten zakładamy w swoim katalogu `personal` i wpisujemy do niego nazwy plików lub katalogów które nie powinny być brane pod uwagę przez Git. Każdy wpis zajmuje osobną linijkę. Przykładowa treść pliku `.gitignore`:
@@ -56,6 +58,8 @@ Warto aby Twoje zmiany do repozytorium nie pozostawały wyłącznie na Twoim kom
 ## Pobieranie aktualnej wersji repozytorium projektu - fetch from upstream, merge
 
 ## Praca na branchach
+
+## merge -> odsyłam do kursów git
 
 ## Materiały dodatkowe
 
@@ -80,24 +84,64 @@ git config core.editor notepad
 
 ## Komendy
 
+git clone [skąd]
+git clone [skąd] .
 git add
 git commit
 git status
 git diff
+git diff --word-diff
 git difftool
 git log
 git log --oneline
 git log -n4 
 git log --since='{15 minutes ago}'
-git tag nazwa_tagu <- ten jest 'lightweight'
-git tag nazwa_tagu -a -m "komentarz" <- ten jest annotated
-git tag nazwa_tagu numer_commit -a -m 
-git tag -d nazwa_tagu 
+git tag [nazwa_tagu] = ten jest 'lightweight'
+git tag [nazwa_tagu] -a -m "komentarz" = ten jest annotated
+git tag [nazwa_tagu] [commitSHA] -a -m 
+git tag -d [nazwa_tagu] 
+git branch [nazwa_nowej_gałęzi]
+git branch = lista gałęzi
+git branch -d = kasowanie
+git branch -m [nowa_nazwa_branch] = rename aktualnej gałęzi
+git branch -vv = pokazuje także związki branchy z remote
+git branch -a = pokazuje także gałęzie zdalnych repozytoriów o których wie nasz lokalny git
+git checkout [branch_name]
+git checkout [tag_name]
+git checkout [commitSHA]
+git checkout [commitSHA~4]
+git checkout -b [nazwa_nowej_gałęzi]
+git checkout @^ -- nazwa_pliku = pobiera do working copy wersję pliku z commit HEAD -1
+git checkout [commitSHA] -- nazwa_pliku = pobiera wersję pliku z konkretnego commit
+git checkout -- nazwa_pliku = pobiera wersję pliku z HEAD
+git merge
+git merge --no-ff
+git cherry-pick [commitSHA]
+git remote
+git remote -v
+git remote show origin
+git remote add [nazwa_remote] [adres]
+git remote rename [stara_nazwa] [nowa_nazwa]
+git push
+git init --bare
+git push [jaki_remote] [jaki_branch]
+git push [jaki_remote] [jaki_branch] -u = dodaje mapowanie do upstream branch na przyszłość
+git push [jaki_remote] [jaki_branch]:[nazwa_branch_w_remote] = wysyła mój branch do brancha o innej nazwie w remote
+git push [jaki_remote] :[nazwa_w_remote] = wysyłam "nic" do brancha w remote czyli kasuję tamten branch w remote
+git push [jaki_remote] --delete [nazwa_w_remote] = jak wyżej
+git push --mirror [jaki_remote] = wysyła wszystko, gałęzie, tagi itp
+git push [jaki_remote] [nazwa_tagu]
+git push --tags = wysyła wszystkie tagi, nie jest rekomendowany bo wysyła także tagi tymczasowe itp
+git push --follow-tags = wysyła tylko tagi typu annotated, ale wszystkie
+git fetch = aktualizuje tracking branch, nie modyfikuje naszych gałęzi
+git fetch --prune --prune-tags
+git fetch --no-tags
+git pull = fetch + merge
 
 ## Nawigacja
 
-commit~X - X commitów wcześniej
-commit^^^ - 3 commity wcześniej
+commitSHA~X - X commitów wcześniej
+commitSHA^^^ - 3 commity wcześniej
 git log tag1..tag2 - od tag1 (bez) do tag2 (włącznie)
 
 ## Słowniczek
@@ -121,3 +165,75 @@ Wskaźnik, referencja do konkretnego commitu - komentarz, autor jest opcjonalny.
 ### Branch, gałąź
 
 Kopia repozytorium, można na niej pracować niezależnie od pozostałych kopii. Fizycznie znajduje się w tym samym katalogu, ale na czas pracy na innej gałęzi pliki są zamieniane.
+
+Branch składa się z commitów. Ostatni commit jest nazywany "tip".
+
+Umożliwia wygodną pracę wielu osób. Ale uwaga - nie w tym samym katalogu (Working Copy) ponieważ w danym momencie możemy mieć aktywną tylko jedną gałąź w danym Working Copy.
+
+Pozwala wydzielić grupy commitów (związane na przykład z daną funkcją) na widoku historii repozytorium.
+
+### master
+
+Domyślna nazwa pierwszej gałęzi w repozytorium Git. 
+
+### tip
+
+Najnowszy (ostatni) commit w danym branchu.
+
+### head (małe litery)
+
+Wskaźnik na tip 
+
+### HEAD (wielkie litery), także pod aliasem @
+
+Commit będący źródłem aktualnej zawartości working copy (aktualny commit)
+
+### Detached head
+
+Stan w którym zrobiliśmy checkout na commit który nie jest tipem jakiegoś brancha.
+
+W takim stanie możemy tworzyć commity ale nie będą dowiązane do żadnej historii. Dlatego warto wykonać:
+
+git checkout -b nowa_gałąź_z_detached_state
+
+W ten sposób zaczynamy pracę na nowej gałęzi która wywodzi się z commita na którym jesteśmy w detached state. W ten sposób też wychodzimy ze stanu detached state na nową gałąź.
+
+Innym sposobem powrotu do "normalności" jest checkout na master lub jakiś inny branch:
+
+git checkout master
+
+### merge
+
+Łączenie zmian (commitów) z dwóch lub więcej gałęzi
+
+### cherry pick
+
+Kopiuje pojedynczy commit między gałęziami. Z tego powodu warto żeby commity zawierały jak najmniej zmian w sobie - można wtedy wybrać ten (albo te) które chcemy użyć jako cherry pick
+
+### Remote
+
+Remote to zdalne repozytorium. Może być na GitHub, na jakimś innym serwerze, może też być innym katalogiem na dysku.
+
+### Origin
+
+Domyślna nazwa zdalnego repozytorium z którego zrobiliśmy clone. 
+
+### Bare repository
+
+Repozytorium bez Working Copy czyli takie na którym nie da się bezpośrednio pracować. Jest to repozytorium serwerowe, które służy do wymiany kodu, jako źródło do clone itd.
+
+### Upstream
+
+Repozytorium nadrzędne, na przykład źródło fork z którego obecnie korzystamy. Mamy zatem Upstream, z niego zrobiony Fork, z niego zrobiony Clone na swój komputer.
+
+### Upstream branch
+
+Odpowiednik lokalnej gałęzi na zdalnym repozytorium. Git potrafi śledzić zmiany między nimi, push i pull domyślnie wiedzą których gałęzi dotyczą. Co więcej, mogą mieć różne nazwy, ważne jest że Git potrafi je poprawnie mapować na siebie.
+
+### tracking branch
+
+Lokalna gałąź reprezentująca zdalną gałąź (np. origin/master) - nie da się na niej pracować bezpośrednio. 
+
+### staging area / cache / index
+
+To co będzie w następnym commit - coś między komendami add i commit. Można tutaj umieścić jeden z wielu zmienionych plików. Można też umieścić część zmian z jednego pliku. 
