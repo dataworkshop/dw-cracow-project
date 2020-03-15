@@ -1,5 +1,68 @@
 # Projekt przepisy -> lista zakupów
 
+## notatki 2020-03-04 - 16 osób
+
+1. bazowa lokalna aplikacja flask
+2. jak uruchamiać flask, jak restartować po zmianach
+3. jak budować moduły z których flask będzie potrafił skorzystać
+4. plugin rozmawiający z flask na localhost
+5. loguru do logowania tego co robi flask
+
+
+Instrukcja dla nowych uczestników!!!
+
+Instrukcja do Gita
+Zapraszanie nowych uczestników
+informacja o slacku na Meetup
+
+Jak uruchomić pipeline
+- instalacja Chrome Extension (i aktualizacja jeśli potrzebna)
+- uruchomienie Flask server
+- przykładowe procesowanie (przepisy, wyniki działania)
+
+--- Todo
+
+- scraping URL wszystkich przepisów na przepisy.pl
+- scraping wszystkich przepisów z przepisy.pl? 
+- analiza składników?
+- czyszczenie danych? Słownik konwersji nazw?
+- entity recognition w przepisach bez listy składników?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## notatki 2020-02-19
 
 1. Pobieranie danych -> użytkownik może dodać przepisy chodząc po stronach internetowych i używając pluginu (plugin należy napisać)
