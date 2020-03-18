@@ -1,148 +1,27 @@
 # Projekt przepisy -> lista zakupów
 
-## notatki 2020-03-04 - 16 osób
+## zadania na 2020-03-18
 
-1. bazowa lokalna aplikacja flask
-2. jak uruchamiać flask, jak restartować po zmianach
-3. jak budować moduły z których flask będzie potrafił skorzystać
-4. plugin rozmawiający z flask na localhost
-5. loguru do logowania tego co robi flask
+Tych którzy nie znają zbyt dobrze narzędzia Git i GitHub, zapraszam do przeglądnięcia dokumentu: https://github.com/dataworkshop/dw-cracow-project/blob/master/docs/git-notes.md
 
+Nie jest to kompletna instrukcja, ale powinna wystarczyć na początek. **Proszę o zgłaszanie uwag do dokumentu, zauważonych niejasności, błędów.**
 
-Instrukcja dla nowych uczestników!!!
+## Todo na 2020-03-18 i kolejne dni
 
-Instrukcja do Gita
-Zapraszanie nowych uczestników
-informacja o slacku na Meetup
-
-Jak uruchomić pipeline
-- instalacja Chrome Extension (i aktualizacja jeśli potrzebna)
-- uruchomienie Flask server
-- przykładowe procesowanie (przepisy, wyniki działania)
-
---- Todo
-
-- scraping URL wszystkich przepisów na przepisy.pl
-- scraping wszystkich przepisów z przepisy.pl? 
-- analiza składników?
-- czyszczenie danych? Słownik konwersji nazw?
-- entity recognition w przepisach bez listy składników?
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## notatki 2020-02-19
-
-1. Pobieranie danych -> użytkownik może dodać przepisy chodząc po stronach internetowych i używając pluginu (plugin należy napisać)
+1. Kto z Was jeszcze nie zainstalował rozszerzenia do Chrome, proszę zainstalować, przydaje się do dalszej pracy. Rozszerzenie jest tutaj: https://github.com/dataworkshop/dw-cracow-project/tree/master/personal/PawelDulak/recipes_shopping_list/chrome_extension Jeśli chcecie rozwijać własną wersję tego rozszerzenia, należy zrobić kopię do swojego katalgu personal, nie edytować w tym źródłowym :)
+2. Kto jeszcze nie uruchomił swojego lokalnego serwera Flask, z którym "gada" rozszerzenie do Chrome, proszę uruchomić. Przykładowy serwer Flask, który potrafi scrapować z `przepisy.pl` jest tutaj: https://github.com/dataworkshop/dw-cracow-project/tree/master/personal/PawelDulak/recipes_shopping_list/recipes_server Podobnie jak z rozszerzeniem do Chrome, jeśli chcecie (a powinniście) edytować pliki serwera, zróbcie jego kopię do swojego katalogu personal.
+3. Na koniec pracy zróbcie commit swoich zmian do swojego repozytorium, wypchnijcie (push) do swojego forka na GitHub, zróbcie Pull Request do głównego repozytorium projektu
    
-   a. czy jest możliwość od razu w pluginie pokazać gdzie jest przepis na stronie?
+To co powyżej to zupełne minimum żeby widzieć jaki jest stan projektu na dzisiaj. Teraz rzeczy które czekają na zrobienie:
 
-   b. podawanie na ile osób chcemy gotować?
+4. Kiedy używamy pluginu co Chrome to zbieramy przepisy. Następnie serwer Flask robi scraping i wyciąga z nich składniki. Spróbujmy teraz zwrócić do pluginu listę składników. Kolejne kroki:
+  * lista "jak leci" - wszystkie składniki jak zostały zescrapowane, bez podziału na przepisy z których pochodzą
+  * lista "alfabetyczna" 
+  * próba zgrupowania podobnych składników (np. pomidory z różnych przepisów) - można użyć jednej z funkcji badającej podobieństwa, przykład użycia w notebooku tutaj: https://github.com/dataworkshop/dw-cracow-project/blob/master/personal/PawelDulak/recipes_shopping_list/ingrediends_scraping/ingredients_analysis.ipynb
+  * dane z 10 000 przepisów znajdziecie na drive: https://drive.google.com/drive/folders/1wy3yvAeSniZI8U6GZl-P_PLzVpNjyPrw?usp=sharing są tam wystawione tymczasowo, warto zatem mieć własną kopię. UWAGA - nie wrzucamy ich do repozytorium, ani własnego, ani na GitHub.
+  * Każdy pomysł na lepsze zgrupowanie podobnych składników będzie cenny
 
-   c. podawanie na ile osób jest ten konkretny przepis?
+5. Jeśli macie własny scrapper do którejś strony z przepisami, spróbujcie go napisać w formie "pluginu" do serwera Flask. Przykładem niech będzie prosty scraper do `przepisy.pl` tutaj: https://github.com/dataworkshop/dw-cracow-project/blob/master/personal/PawelDulak/recipes_shopping_list/recipes_server/przepisy_pl_scraping.py Przyjmuje on URL strony a zwraca listę składników. Chodzi o zbudowanie co najmniej kilku takich pluginów do różnych stron, tak żeby nasz serwer potrafił czytać przepisy z wielu źródeł.
+6. Zachęcam też do poszukania tekstów na temat "entity recognition" czyli wyszukiwania w tekście encji - w naszym przypadku będą to składniki potraw oraz ich ilości. Przyda nam się to do przepisów w których składniki nie są podawane jako osobna lista. Dajcie znać co znaleźliście i jak możemy tego użyć w naszym projekcie.
 
-   d. plugin komunikuje się z serwerem na którym następuje dalsza obróbka danych
-
-   e. co ze stronami których nie obsługujemy? "Powiadom mnie kiedy będzie wsparcie dla tej strony"?
-
-2. Scrapowanie składników z przepisów -> mamy niektóre strony z których możemy szybko pobrać składniki oraz sporo stron z których składniki jest trudniej pobrać (nie są jednoznacznie wydzielone). Potrzebujemy scrapery do różnych stron. 
-
-   a. co otrzymujemy w wyniku scrapowania: lista składników, składnik i ilość
-
-   b. Mamy gotowy scrapper do "przepisy.pl"
-
-   c. Przydał by się silnik do entity recognition w przepisach w których nie mamy dostępu do listy składników
-
-3. Grupowanie składników na listę zakupów -> rozpoznawanie podobnych składników, odrzucanie nieistotnych informacji
-   
-   a. potrzebujemy silnik do grupowania składników 
-
-   b. w przyszłości, poza grupowaniem składników przydało by się jeszcze sumowanie ilości oraz przeliczanie ilości kiedy przepis jest na inną ilość osób a gotujemy na inną ilość.
-
-4. Gotową listę przekazujemy do pluginu do wyświetlenia w przeglądarce
-
----
-
-Podział pracy:
-
-* Filip -> backend, plugin FF
-* Mikołaj -> scraping Lidl
-* Paweł -> plugin Chrome
-
-## notatki 2020-01-22
-
-* zobaczyć jakie mamy dane
-* jakie mamy biblioteki do mierzenia podobieństwa ciągów znaków? Jak działają?
-* czy możemy wyodrębnić grupy produktów?
-* czy są słowa które można by usuwać z nazw produktów zanim je będziemy porównywać?
-* czy warto grupować po informacji "w puszce" ze względu na lokalizację w sklepie?
-
-## notatki 2020-01-08
-
-* strona: przepisy.pl - przepisy w formie łatwiejszej do scrapowania
-
-* Zbieranie danych
-  * Scrapping danych
-    * Gramatura w powiązaniu z produktem
-      * różne sposoby podania gramatury, ilości
-      * kiedy mamy podane produkty to nie zawsze wiadomo co jest gramaturą a co jest produktem, a co jest komentarzem do produktu
-      * czasem jest podany składnik bez ilości (a w przepisie: możesz posypać ...)
-    * Narządzia i naczynia które możemy potrzebować
-    * Dla jakiej ilości osób jest przepis
-    * Składniki czasem są wypisane osobno a czasem trzeba je wyciągnąć z przepisu jako takiego
-      * można zacząć od stron na których dane są w odpowiedni sposób ustrukturyzowane
-    * kwestia łączenia różnych opisów tych samych produktów
-      * sztuki, gramy, szklanki, łyżki itd
-    * produkt jeden albo drugi - limonki albo cytryny
-
-* Konsolidacja produktów 
-  * Jak wykrywamy że produkty to te same rzeczy?
-
-* Inne pomysły 
-  * dobieranie przepisów pod kątem tego co już posiadamy albo czego opakowanie napoczęliśmy i trzeba zużyć
-  * czy możemy uzgodnić jeden format danych dla gramatury produktów?
-  * Lista produktów -> dostępna na frisco.pl
-  * Biblioteka do porównywania tekstów może pomóc w przypisaniu produktów z przepisów do produktów z listy frisco.pl
-  * Czy możemy użyć word2vec? 
-  * na repozytorium - scrapper do konkretnych stron -> linki wrzucić na slack
-
-
-1) Jakikolwiek scrapper do przepisów -> konkretna lista produktów w formie jak jest na stronie z przepisem
-2) Przeskalowanie ilości na ilość osób która nas interesuje
-3) Konsolidacja produtków z różnych przepisów w jedną listę - wychwytywanie zależności między tym co wyciągnęliśmy z przepisów a tym co mamy w sklepie frisco.pl
-
-## plan pracy do kolejnego spotkania:
-- pobieranie produktów ze stron: przepisy.pl, kuchnialidla.pl, 
-- zapisujemy do CSV - trzy kolumny - URL, produkt, gramatura (ilość)
+Ponownie - jeśli będziecie mieli kod z nowymi rzeczami, pamiętajcie żeby zrobić commit do swojego repozytorium, wypchnąć do Git i wysłać Pull Request do głównego repozytorium projektu. W ten sposób wzbogacimy wspólne repozytorium i będziemy budować kolejne cegiełki do naszego projektu.
