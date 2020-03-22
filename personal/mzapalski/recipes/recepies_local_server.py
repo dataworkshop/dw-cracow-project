@@ -18,7 +18,7 @@ def get_url(url):
     else:
         return r.text
 
-def GetIngrs(url):
+def GetIngrsFromKuchniaLidla(url):
     bs = BeautifulSoup(get_url(url), 'lxml')
     a = bs.findAll("div", {"class": "skladniki"})
     ings = a[0].find_all('li')
@@ -57,14 +57,12 @@ def generate_list():
     print(request.data)
     lista_url = json.loads(request.data)
     print(lista_url)
-    #GetIngrs(lista_url[0]['url'])
     response = {
         'data': 'got it!',
     }
-    #response = GetIngrs(lista_url[0]['url'])
     response = []
     for item in lista_url:
-    	response.append(GetIngrs(item['url']))
+    	response.append(GetIngrsFromKuchniaLidla(item['url']))
 
     a = {'output':response}
     return a
