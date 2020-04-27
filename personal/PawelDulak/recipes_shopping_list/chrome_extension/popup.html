@@ -34,18 +34,6 @@
             outline: 0;
         }
 
-        button.inlSmall {
-            width: auto;
-            height: 2rem;
-            padding: 0 5px;
-            font-size: inherit;
-            line-height: inherit;
-            text-transform: inherit;
-            margin: 2px 5px;
-            background-color: #f00;
-            border: 0.1rem solid #f00;
-        }
-
         p, ul, label, input {
             font-size: 1rem;
         }
@@ -53,6 +41,33 @@
         input {
             display: block;
             width: 100%;
+        }
+
+        #recipesList {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #recipesList li {
+            display: block;
+            height: 3rem;
+            line-height: 3rem;
+            background-color: rgb(190, 190, 190);
+            margin: 3px;
+            padding: 3px 10px;
+        }
+
+        button.inlSmall {
+            width: auto;
+            height: 2.8rem;
+            padding: 0 5px;
+            font-size: inherit;
+            line-height: 2.8rem;
+            text-transform: inherit;
+            margin: 2px 0;
+            background-color: #f00;
+            border: 0.1rem solid #f00;
+            float: right;
         }
     </style>
 </head>
