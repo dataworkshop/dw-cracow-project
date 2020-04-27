@@ -65,9 +65,13 @@ function updateRecipesList() {
     recipesList.innerHTML = '';
     chrome.storage.sync.get('recipesArray', function(data) {
         if (data.recipesArray.length > 0) {
-            data.recipesArray.forEach(function(recipe){
-                recipesList.innerHTML += '<li>' + recipe.title + '</li>';
+            data.recipesArray.forEach(function(recipe, index){
+                recipesList.innerHTML += '<li>' + recipe.title + '<button class="inlSmall" data-index="' + index + '">Usuń</button></li>';
             });
+            const buttons = document.querySelectorAll('.inlSmall');
+            buttons.forEach(function (currentBtn) {
+                currentBtn.addEventListener('click', removeRecipe);
+            })
         } else {
             recipesList.innerHTML = '<li>Brak przepisów na liście</li>';
         }
@@ -88,4 +92,20 @@ function displayError() {
     resultPlaceholder.style.display = 'block';
     resultPlaceholder.innerHTML = '<p>Wystąpił błąd podczas komunikacji z serwerem</p>';
     document.getElementById('ajax-loader-overlay').style.display = 'none';
+}
+
+function removeRecipe(ev) {
+    const index = ev.target.dataset.index;
+    if (confirm('Czy jesteś pewien?')) {
+        chrome.storage.sync.get('recipesArray', function (data) {
+            if (data.recipesArray.length > index) {
+                data.recipesArray.splice(index, 1);
+                chrome.storage.sync.set({
+                    recipesArray: data.recipesArray,
+                }, function () {
+                    updateRecipesList();
+                });
+            }
+        });
+    }
 }
