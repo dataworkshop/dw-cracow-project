@@ -10,7 +10,6 @@ import pickle
 BOARD_ROWS = 3
 BOARD_COLS = 3
 
-
 class State:
     def __init__(self, p1, p2):
         self.board = np.zeros((BOARD_ROWS, BOARD_COLS))
@@ -287,22 +286,20 @@ class HumanPlayer:
 if __name__ == "__main__":
     # training
 
-    # p1 = Player("p1")
-    # p2 = Player("p2")
+    p1 = Player("p1")
+    p2 = Player("p2")
 
-    # st = State(p1, p2)
-    # print("training...")
-    # st.play(5000)
+    st = State(p1, p2)
+    print("training...")
+    # train on 5000 rounds
+    st.play(5000)
 
-    # p1.savePolicy()
-    # p2.savePolicy()
+    p1.savePolicy()
+    p2.savePolicy()
 
     # play with human
     p1 = Player("computer", exp_rate=0)
-    p2 = Player("computer2", exp_rate=0)
-    p1.loadPolicy("policy_p1_50000")
-    p2.loadPolicy("policy_p2")
-
+    p1.loadPolicy("policy_p1")
     p2 = HumanPlayer("human")
 
     st = State(p1, p2)

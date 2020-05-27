@@ -1,0 +1,39 @@
+Pierwszy ruch
+
+   |   |   
+-----------
+   | X |     0.008
+-----------
+   |   |   
+
+Drugi ruch
+
+   |   | o 
+-----------
+   | x | X   0.04
+-----------
+   |   |   
+
+Trzeci ruch
+
+   | o | o 
+-----------
+ X | x | x   0.2   ===> nagroda: 1 
+-----------
+   |   |   
+
+Obliczamy "wartość" poszczególnych ruchów z wzoru:
+
+V(s) <= V(s) + learning_rate * (reward - V(s))
+
+Przy pierwszym przebiegu, wszystkie możliwe ruchy na planszy mają wartość 0 (zero)
+
+V(s) = 0 + 0.2 * (1 - 0) = 0.2
+
+Zatem wartość trzeciego ruchu wynosi od teraz 0.2 i bierzemy ją jako "nagrodę" dla ruchu drugiego:
+
+V(s) = 0 + 0.2 * (0.2 - 0) = 0.04 (wartość drugiego ruchu)
+
+Podobnie z pierwszym ruchem:
+
+V(s) = 0 + 0.2 * (0.04 - 0) = 0.008
