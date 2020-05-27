@@ -222,3 +222,4 @@ $RECYCLE.BIN/
 .idea
 *.iml
 .ipynb_checkpoints
+.vscode
